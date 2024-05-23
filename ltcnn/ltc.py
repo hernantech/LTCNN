@@ -13,13 +13,14 @@ class ODESolver(enum.Enum):
     RungeKutta = 2
     
 
-class LTCCell(tf.keras.layers.AbstractRNNCell):
+class LTCCell(tf.keras.layers.AbstractRNNCell, solver_dep_injection):
     def __init__(self, units, ode_steps=6, **kwargs):
         self.units = units
         super(LTCCell, self).__init__(**kwargs)
         # Number of ODE solver steps in one RNN step
         self.ode_solver_unfolds = ode_steps
-        self.solver = ODESolver.SemiImplicit
+        self.solver = solver_dep_injection
+        #self.solver = ODESolver.SemiImplicit
 
         self.input_mapping = MappingType.Affine
 
