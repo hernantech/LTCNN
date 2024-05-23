@@ -1,0 +1,3 @@
+[submodule "liquid_time_constant_networks"]
+	path = liquid_time_constant_networks
+	url = https://github.com/hernantech/liquid_time_constant_networks.git
